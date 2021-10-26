@@ -1,5 +1,6 @@
+import requests
+import statistics
 from bs4 import BeautifulSoup
-import requests, statistics
 
 twenty_url = "https://www.tfrrs.org/results/xc/17574"
 nineteen_url = "https://www.tfrrs.org/results/xc/16685"
@@ -22,7 +23,7 @@ def get_times(url, table_number):
     times = []
     for racer in racers:
         times.append(racer[5])
-    return (times)
+    return times
 
 
 def convert_to_seconds(times):
@@ -34,7 +35,7 @@ def convert_to_seconds(times):
             tenth = time[6]
             seconds = (int(mins) * 60) + int(seconds) + (int(tenth) / 10)
             list_in_seconds.append(seconds)
-    return (list_in_seconds)
+    return list_in_seconds
 
 
 times = get_times(twenty_url, race2)  # Change these inputs to get desired results
